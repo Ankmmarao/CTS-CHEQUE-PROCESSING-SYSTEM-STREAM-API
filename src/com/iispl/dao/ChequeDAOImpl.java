@@ -3,6 +3,7 @@ package com.iispl.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,6 +88,23 @@ public class ChequeDAOImpl implements ChequeDAO {
 	@Override
 	public void updateMicrStatus(String chequeNumber, MicrStatus status) {
 		// TODO Auto-generated method stub
+		String query="UPDATE CTS_CHEQUE SET micr_status = ? WHERE cheque_number = ?";
+		Connection con;
+		try {
+			con = DBUtils.getDataSource().getConnection();
+			PreparedStatement stmt=con.prepareStatement(query);
+			stmt.setString(1, status.name());
+			stmt.setString(2, chequeNumber);
+			stmt.executeUpdate(query);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		
+		
+		
 		
 	}
 
