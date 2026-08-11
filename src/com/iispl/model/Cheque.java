@@ -23,10 +23,7 @@ public class Cheque {
 	private MicrStatus micrStatus;
 	private ValidationStatus validationStatus;
 	private int batchId;
-	public Cheque(int chequeId, String chequeNumber, String accountNumber, String customerName, String branchCode,
-			String micrCode, BigDecimal amount, BigDecimal availableBalance, LocalDate chequeDate,
-			AccountStatus accountStatus, ChequeType chequeType, MicrStatus micrStatus,
-			ValidationStatus validationStatus, int batchId) {
+	public Cheque() {
 		super();
 		this.chequeId = chequeId;
 		this.chequeNumber = chequeNumber;
