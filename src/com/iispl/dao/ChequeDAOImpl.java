@@ -102,11 +102,42 @@ public class ChequeDAOImpl implements ChequeDAO {
 	public void updateMicrStatus(String chequeNumber, MicrStatus status) {
 		// TODO Auto-generated method stub
 
+		String query="UPDATE CTS_CHEQUE SET micr_status = ? WHERE cheque_number = ?";
+		Connection con;
+		try {
+			con = DBUtils.getDataSource().getConnection();
+			PreparedStatement stmt=con.prepareStatement(query);
+			stmt.setString(1, status.name());
+			stmt.setString(2, chequeNumber);
+			stmt.executeUpdate(query);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		
+		
+		
 	}
 
 	@Override
 	public void updateValidationStatus(String chequeNumber, ValidationStatus status) {
 		// TODO Auto-generated method stub
+
+		String sql = "UPDATE CTS_CHEQUE SET validation_status = ? WHERE cheque_number = ?";
+		
+		try {
+			Connection connection = DBUtils.getDataSource().getConnection();
+			PreparedStatement statement = connection.prepareStatement(sql);
+			statement.setString(1, status.name());
+			statement.setString(2, chequeNumber);
+			int resultSet = statement.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
 
 	}
 
