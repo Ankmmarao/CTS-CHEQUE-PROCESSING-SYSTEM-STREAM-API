@@ -45,9 +45,11 @@ public class ChequeServicesImpl implements ChequeServices {
 	@Override
 	public long getTotalChequeRecordCount() {
 		// TODO Auto-generated method stub
-		return 0;
-	}
+	       return chequeDAO.getAllCheques().stream()
+	                .count();
+	    }
 
+	
 	@Override
 	public Optional<Cheque> getHighestValueCheque() {
 		// TODO Auto-generated method stub
