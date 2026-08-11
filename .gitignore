@@ -4,16 +4,19 @@
 # Build directories
 target/
 build/
-
-# IDE files
-.idea/
-*.iml
-.vscode/
+out/
 
 # Eclipse
 .classpath
 .project
 .settings/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# VS Code
+.vscode/
 
 # Logs
 *.log
