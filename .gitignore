@@ -6,11 +6,6 @@ target/
 build/
 out/
 
-# Eclipse
-.classpath
-.project
-.settings/
-
 # IntelliJ IDEA
 .idea/
 *.iml
