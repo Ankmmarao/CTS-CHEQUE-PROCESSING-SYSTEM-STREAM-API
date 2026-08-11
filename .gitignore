@@ -1,0 +1,27 @@
+# Compiled Java files
+*.class
+
+# Build directories
+target/
+build/
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Logs
+*.log
+
+# Environment/config files containing secrets
+.env
+application-local.properties
+
+# OS files
+.DS_Store
+Thumbs.db
