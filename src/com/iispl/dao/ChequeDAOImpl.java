@@ -93,6 +93,18 @@ public class ChequeDAOImpl implements ChequeDAO {
 	@Override
 	public void updateValidationStatus(String chequeNumber, ValidationStatus status) {
 		// TODO Auto-generated method stub
+		String sql = "UPDATE CTS_CHEQUE SET validation_status = ? WHERE cheque_number = ?";
+		
+		try {
+			Connection connection = DBUtils.getDataSource().getConnection();
+			PreparedStatement statement = connection.prepareStatement(sql);
+			statement.setString(1, status.name());
+			statement.setString(2, chequeNumber);
+			int resultSet = statement.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 
