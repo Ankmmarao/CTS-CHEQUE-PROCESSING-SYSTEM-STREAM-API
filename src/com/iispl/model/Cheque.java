@@ -23,7 +23,11 @@ public class Cheque {
 	private MicrStatus micrStatus;
 	private ValidationStatus validationStatus;
 	private int batchId;
-	public Cheque() {
+
+	public Cheque(int chequeId, String chequeNumber, String accountNumber, String customerName, String branchCode,
+			String micrCode, BigDecimal amount, BigDecimal availableBalance, LocalDate chequeDate,
+			AccountStatus accountStatus, ChequeType chequeType, MicrStatus micrStatus,
+			ValidationStatus validationStatus, int batchId) {
 		super();
 		this.chequeId = chequeId;
 		this.chequeNumber = chequeNumber;
@@ -39,6 +43,9 @@ public class Cheque {
 		this.micrStatus = micrStatus;
 		this.validationStatus = validationStatus;
 		this.batchId = batchId;
+	}
+	public Cheque() {
+		// TODO Auto-generated constructor stub
 	}
 	public int getChequeId() {
 		return chequeId;
@@ -123,6 +130,14 @@ public class Cheque {
 	}
 	public void setBatchId(int batchId) {
 		this.batchId = batchId;
+	}
+	@Override
+	public String toString() {
+		return "Cheque [chequeId=" + chequeId + ", chequeNumber=" + chequeNumber + ", accountNumber=" + accountNumber
+				+ ", customerName=" + customerName + ", branchCode=" + branchCode + ", micrCode=" + micrCode
+				+ ", amount=" + amount + ", availableBalance=" + availableBalance + ", chequeDate=" + chequeDate
+				+ ", accountStatus=" + accountStatus + ", chequeType=" + chequeType + ", micrStatus=" + micrStatus
+				+ ", validationStatus=" + validationStatus + ", batchId=" + batchId + "]";
 	}
 	
 	

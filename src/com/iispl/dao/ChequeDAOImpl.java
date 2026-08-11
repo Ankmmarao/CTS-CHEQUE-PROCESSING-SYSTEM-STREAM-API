@@ -16,33 +16,48 @@ import com.iispl.util.DBUtils;
 public class ChequeDAOImpl implements ChequeDAO {
 
 	@Override
-	public List<Cheque> getAllCheques() throws Exception {
+	public List<Cheque> getAllCheques()  {
 		// TODO Auto-generated method stub
-		String sql="select * from Cheque";
+		String sql="select * from CTS_CHEQUE";
 		
 		List<Cheque> chequeList=new ArrayList<>();
 		
-		Connection con=DBUtils.getDataSource().getConnection();
 		
 		try {
+			Connection con=DBUtils.getDataSource().getConnection();
+
 			PreparedStatement stmt=con.prepareStatement(sql);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()) {
-				Cheque cheque=new Cheque();
-				cheque.setChequeId(rs.getInt("chequeId"));
-				cheque.setChequeNumber(rs.getString("chequeNumber"));
-				cheque.setAccountNumber(rs.getString("accountNumber"));
-				cheque.setCustomerName(rs.getString("customerName"));
-				cheque.setBranchCode(rs.getString("branchCode"));
-				cheque.setMicrCode(rs.getString("micrCode"));
+				Cheque cheque = new Cheque();
+
+				cheque.setChequeId(rs.getInt("cheque_id"));
+				cheque.setChequeNumber(rs.getString("cheque_number"));
+				cheque.setAccountNumber(rs.getString("account_number"));
+				cheque.setCustomerName(rs.getString("customer_name"));
+				cheque.setBranchCode(rs.getString("branch_code"));
+				cheque.setMicrCode(rs.getString("micr_code"));
 				cheque.setAmount(rs.getBigDecimal("amount"));
-				cheque.setAvailableBalance(rs.getBigDecimal("availableBalance"));
-				cheque.setChequeDate(rs.getDate("chequeDate").toLocalDate());
-				cheque.setAccountStatus(AccountStatus.valueOf(rs.getString("accountStatus")));
-				cheque.setChequeType(ChequeType.valueOf(rs.getString("chequeType")));
-				cheque.setMicrStatus(MicrStatus.valueOf(rs.getString("micrStatus")));
-				cheque.setValidationStatus(ValidationStatus.valueOf(rs.getString("validationStatus")));
-				cheque.setBatchId(rs.getInt("batchId"));
+				cheque.setAvailableBalance(rs.getBigDecimal("available_balance"));
+				cheque.setChequeDate(rs.getDate("cheque_date").toLocalDate());
+
+				cheque.setAccountStatus(
+				    AccountStatus.valueOf(rs.getString("account_status"))
+				);
+
+				cheque.setChequeType(
+				    ChequeType.valueOf(rs.getString("cheque_type"))
+				);
+
+				cheque.setMicrStatus(
+				    MicrStatus.valueOf(rs.getString("micr_status"))
+				);
+
+				cheque.setValidationStatus(
+				    ValidationStatus.valueOf(rs.getString("validation_status"))
+				);
+
+				cheque.setBatchId(rs.getInt("batch_id"));
 				
 				chequeList.add(cheque);
 				
@@ -54,7 +69,7 @@ public class ChequeDAOImpl implements ChequeDAO {
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-		return null;
+		return chequeList;
 	}
 
 }

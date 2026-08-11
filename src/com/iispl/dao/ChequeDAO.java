@@ -5,6 +5,6 @@ import java.util.List;
 import com.iispl.model.Cheque;
 
 public interface ChequeDAO {
-     List<Cheque> getAllCheques() throws Exception;
+     public List<Cheque> getAllCheques();
      
 }
