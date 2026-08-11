@@ -72,4 +72,28 @@ public class ChequeDAOImpl implements ChequeDAO {
 		return chequeList;
 	}
 
+	@Override
+	public List<Cheque> getChequesByBatch(int batchId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Cheque getChequeByNumber(String chequeNumber) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void updateMicrStatus(String chequeNumber, MicrStatus status) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateValidationStatus(String chequeNumber, ValidationStatus status) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
