@@ -8,9 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.OptionalDouble;
-
-import java.util.Set;
-
 import java.util.stream.Collectors;
 
 import com.iispl.dao.ChequeDAO;
@@ -162,10 +159,7 @@ public class ChequeServicesImpl implements ChequeServices {
 		return cheques.stream()
 				.collect(Collectors.groupingBy(Cheque::getBranchCode,Collectors.mapping(Cheque::getChequeNumber,
 						Collectors.toList())));
-				
 
-		
-		return null;
 	}
 
 	@Override

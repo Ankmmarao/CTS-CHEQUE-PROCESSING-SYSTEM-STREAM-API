@@ -1,12 +1,10 @@
 package com.iispl.service;
 
-import java.util.Comparator;
 import java.util.DoubleSummaryStatistics;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.OptionalDouble;
-import java.util.Set;
 
 import com.iispl.model.Cheque;
 
