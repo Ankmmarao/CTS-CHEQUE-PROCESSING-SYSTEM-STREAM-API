@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.OptionalDouble;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import com.iispl.dao.ChequeDAO;
@@ -80,7 +81,7 @@ public class ChequeServicesImpl implements ChequeServices {
 	@Override
 	public Map<String, Cheque> getChequeLookup() {
 		// TODO Auto-generated method stub
-		return null;
+		return cheques.stream().collect(Collectors.toMap(Cheque::getChequeNumber, Function.identity(),(existing,duplicate) -> existing));
 	}
 
 	
