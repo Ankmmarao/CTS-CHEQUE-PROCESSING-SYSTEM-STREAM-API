@@ -10,7 +10,6 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.iispl.dao.ChequeDAO;
-
 import com.iispl.dao.ChequeDAOImpl;
 import com.iispl.model.Cheque;
 
@@ -78,6 +77,8 @@ public class ChequeServicesImpl implements ChequeServices {
 		return null;
 	}
 
+	
+//	Using the approved-cheque result from the existing application, create one comma-separated chequenumber String
 	@Override
 	public String getApprovedCtsReferences() {
 		// TODO Auto-generated method stub
@@ -114,16 +115,26 @@ public class ChequeServicesImpl implements ChequeServices {
 		return null;
 	}
 
+//	Add diagnostic observation to one existing Stream pipeline. Do not use peek() to perform essential
+//	business updates.
 	@Override
 	public List<Cheque> traceChequeStream() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+//	Create a reusable Comparator: branch code first, then amount descending, then cheque number.
 	@Override
-	public Comparator<Cheque> getMultiLevelComparator() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Cheque> getMultiLevelComparator() {
+		
+		Comparator<Cheque> chequeComparator =
+		        Comparator.comparing(Cheque::getBranchCode)
+		                .thenComparing(Cheque::getAmount, Comparator.reverseOrder())
+		                .thenComparing(Cheque::getChequeNumber);
+		return cheques.stream()
+						.sorted(chequeComparator)
+						.collect(Collectors.toList());	
+		
 	}
 
 	@Override
