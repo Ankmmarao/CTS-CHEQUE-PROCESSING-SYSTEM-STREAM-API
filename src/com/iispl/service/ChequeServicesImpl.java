@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.OptionalDouble;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import com.iispl.dao.ChequeDAO;
 
@@ -37,17 +38,24 @@ public class ChequeServicesImpl implements ChequeServices {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+// getTotalChequeRecord
+	//getChequePage
+	//getBranchChequeNumbers
 	@Override
 	public List<Cheque> getChequePage(int pageNumber, int pageSize) {
 		// TODO Auto-generated method stub
-		return null;
+		long skipCount = (long) (pageNumber - 1)*pageSize;
+		
+		return cheques.stream()
+				.skip(skipCount)
+				.limit(pageSize)
+				.collect(Collectors.toList());
 	}
 
 	@Override
 	public long getTotalChequeRecordCount() {
 		// TODO Auto-generated method stub
-	       return chequeDAO.getAllCheques().stream()
+	       return cheques.stream()
 	                .count();
 	    }
 
