@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.OptionalDouble;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.iispl.dao.ChequeDAO;
@@ -28,7 +29,8 @@ public class ChequeServicesImpl implements ChequeServices {
 	@Override
 	public List<String> getUniqueMicrCodes() {
 		// TODO Auto-generated method stub
-		return null;
+	
+		return cheques.stream().map(Cheque::getMicrCode).distinct().collect(Collectors.toList());
 	}
 
 	@Override
