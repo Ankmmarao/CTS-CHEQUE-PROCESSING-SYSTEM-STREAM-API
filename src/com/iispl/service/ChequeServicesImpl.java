@@ -23,7 +23,8 @@ public class ChequeServicesImpl implements ChequeServices {
 	@Override
 	public List<String> getUniqueBranchCodes() {
 		// TODO Auto-generated method stub
-		return null;
+		List<String> branches = cheques.stream().map(Cheque::getBranchCode).distinct().collect(Collectors.toList());
+		return branches;
 	}
 
 	@Override
