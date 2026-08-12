@@ -44,5 +44,5 @@ public interface ChequeServices {
     
 	List<Cheque> traceChequeStream();
 
-	Comparator<Cheque> getMultiLevelComparator();
+	List<Cheque> getMultiLevelComparator();
 }
