@@ -132,6 +132,7 @@ public class ChequeServicesImpl implements ChequeServices {
 	@Override
 	public Map<String, DoubleSummaryStatistics> getBranchStatistics() {
 		
+		
 		Map<String, DoubleSummaryStatistics> result = cheques.stream()
 		        .collect(Collectors.groupingBy(
 		                Cheque::getBranchCode,
@@ -143,10 +144,12 @@ public class ChequeServicesImpl implements ChequeServices {
 		// TODO Auto-generated method stub
 		return  result;
 	}
+	
 
 	@Override
 	public Map<String, List<String>> getBranchChequeNumbers() {
 		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
