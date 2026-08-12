@@ -9,10 +9,8 @@ import com.iispl.service.ChequeServicesImpl;
 public class CTSStreamAPIMain {
   public static void main(String[] args) {
 	  
-	  ChequeServices service=new ChequeServicesImpl();
-	  List<Cheque> cheques =service.getAllCheques();
-	  
-	  cheques.forEach(System.out::println);
+	  CTMStreamProcesingApplications cpa=new CTMStreamProcesingApplications();
+	  cpa.start();
   }  
   
 }
