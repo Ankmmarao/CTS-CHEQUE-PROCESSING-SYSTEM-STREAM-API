@@ -91,7 +91,7 @@ public class ChequeServicesImpl implements ChequeServices {
 	@Override
 	public Map<String, Long> getChequeCountByBranch() {
 		// TODO Auto-generated method stub
-		return null;
+		return cheques.stream().collect(Collectors.groupingBy(Cheque::getBranchCode,Collectors.counting()));
 	}
 
 	@Override
