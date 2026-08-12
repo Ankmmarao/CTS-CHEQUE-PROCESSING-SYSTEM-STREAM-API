@@ -7,10 +7,11 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.OptionalDouble;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import com.iispl.dao.ChequeDAO;
-
 import com.iispl.dao.ChequeDAOImpl;
+import com.iispl.enums.ValidationStatus;
 import com.iispl.model.Cheque;
 
 public class ChequeServicesImpl implements ChequeServices {
@@ -23,13 +24,14 @@ public class ChequeServicesImpl implements ChequeServices {
 	@Override
 	public List<String> getUniqueBranchCodes() {
 		// TODO Auto-generated method stub
-		return null;
+		return cheques.stream().map(Cheque::getBranchCode).distinct().collect(Collectors.toList());
 	}
 
 	@Override
 	public List<String> getUniqueMicrCodes() {
 		// TODO Auto-generated method stub
-		return null;
+	
+		return cheques.stream().map(Cheque::getMicrCode).distinct().collect(Collectors.toList());
 	}
 
 	@Override
@@ -61,7 +63,7 @@ public class ChequeServicesImpl implements ChequeServices {
 	@Override
 	public Optional<Cheque> getLowestValueCheque() {
 		// TODO Auto-generated method stub
-		return Optional.empty();
+		return cheques.stream().min(Comparator.comparing(Cheque::getAmount));
 	}
 
 	@Override
@@ -76,10 +78,14 @@ public class ChequeServicesImpl implements ChequeServices {
 		return null;
 	}
 
+	
+//	Using the approved-cheque result from the existing application, create one comma-separated chequenumber String
 	@Override
 	public String getApprovedCtsReferences() {
-		// TODO Auto-generated method stub
-		return null;
+		 return cheques.stream()
+				 		.filter(c->c.getValidationStatus()==ValidationStatus.APPROVED)
+				 		.map(Cheque::getChequeNumber)
+				 		.collect(Collectors.joining(","));
 	}
 
 	@Override
@@ -112,16 +118,28 @@ public class ChequeServicesImpl implements ChequeServices {
 		return null;
 	}
 
+//	Add diagnostic observation to one existing Stream pipeline. Do not use peek() to perform essential
+//	business updates.
 	@Override
 	public List<Cheque> traceChequeStream() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Cheque> tracedcheques=cheques.stream()
+											.peek(c-> System.out.println("Trace -> "+c.getChequeNumber()+" entered pipeline"))
+											.collect(Collectors.toList());
+		return tracedcheques;
 	}
 
+//	Create a reusable Comparator: branch code first, then amount descending, then cheque number.
 	@Override
-	public Comparator<Cheque> getMultiLevelComparator() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Cheque> getMultiLevelComparator() {
+		
+		Comparator<Cheque> chequeComparator =
+		        Comparator.comparing(Cheque::getBranchCode)
+		                .thenComparing(Cheque::getAmount, Comparator.reverseOrder())
+		                .thenComparing(Cheque::getChequeNumber);
+		return cheques.stream()
+						.sorted(chequeComparator)
+						.collect(Collectors.toList());	
+		
 	}
 
 	@Override
