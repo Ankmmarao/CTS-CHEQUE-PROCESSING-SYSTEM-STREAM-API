@@ -74,7 +74,8 @@ public class ChequeServicesImpl implements ChequeServices {
 	@Override
 	public OptionalDouble getAverageChequeAmount() {
 		// TODO Auto-generated method stub
-		return null;
+		OptionalDouble average=cheques.stream().mapToDouble(cheque->cheque.getAmount().doubleValue()).average();
+		return average;
 	}
 
 	@Override
