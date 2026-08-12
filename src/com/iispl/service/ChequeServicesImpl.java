@@ -16,16 +16,18 @@ import com.iispl.model.Cheque;
 public class ChequeServicesImpl implements ChequeServices {
 	
 	static ChequeDAO chequeDAO=new ChequeDAOImpl();
+	static List<Cheque> cheques =chequeDAO.getAllCheques();
+
 	
 
 	@Override
-	public Set<String> getUniqueBranchCodes() {
+	public List<String> getUniqueBranchCodes() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Set<String> getUniqueMicrCodes() {
+	public List<String> getUniqueMicrCodes() {
 		// TODO Auto-generated method stub
 		return null;
 	}

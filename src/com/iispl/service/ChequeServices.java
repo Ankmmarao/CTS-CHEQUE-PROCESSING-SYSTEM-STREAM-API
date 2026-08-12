@@ -13,10 +13,8 @@ import com.iispl.model.Cheque;
 public interface ChequeServices {
 	
 	public List<Cheque> getAllCheques();
-	
-	Set<String> getUniqueBranchCodes();
-
-	Set<String> getUniqueMicrCodes();
+	List<String> getUniqueBranchCodes();
+	List<String> getUniqueMicrCodes();
 
 	List<Cheque> getTopFiveProcessingRecords();
 
@@ -43,7 +41,7 @@ public interface ChequeServices {
 	Map<String, List<String>> getBranchChequeNumbers();
 
 	List<Cheque> getFinalizedCtsResult();
-
+    
 	List<Cheque> traceChequeStream();
 
 	Comparator<Cheque> getMultiLevelComparator();
