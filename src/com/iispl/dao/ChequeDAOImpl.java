@@ -37,8 +37,9 @@ public class ChequeDAOImpl implements ChequeDAO {
 				cheque.setCustomerName(rs.getString("customer_name"));
 				cheque.setBranchCode(rs.getString("branch_code"));
 				cheque.setMicrCode(rs.getString("micr_code"));
-				cheque.setAmount(rs.getBigDecimal("amount"));
-				cheque.setAvailableBalance(rs.getBigDecimal("available_balance"));
+				cheque.setAmount(rs.getDouble("amount"));
+				cheque.setAvailableBalance(rs.getDouble("available_balance"));
+				
 				cheque.setChequeDate(rs.getDate("cheque_date").toLocalDate());
 
 				cheque.setAccountStatus(AccountStatus.valueOf(rs.getString("account_status")));
@@ -76,8 +77,8 @@ public class ChequeDAOImpl implements ChequeDAO {
 				while (rs.next()) {
 					cheques.add(new Cheque(rs.getInt("cheque_id"), rs.getString("cheque_number"),
 							rs.getString("account_number"), rs.getString("customer_name"), rs.getString("branch_code"),
-							rs.getString("micr_code"), rs.getBigDecimal("amount"),
-							rs.getBigDecimal("available_balance"), rs.getDate("cheque_date").toLocalDate(),
+							rs.getString("micr_code"), rs.getDouble("amount"),
+							rs.getDouble("available_balance"), rs.getDate("cheque_date").toLocalDate(),
 							AccountStatus.valueOf(rs.getString("account_status")),
 							ChequeType.valueOf(rs.getString("cheque_type")),
 							MicrStatus.valueOf(rs.getString("micr_status")),
@@ -114,8 +115,8 @@ public class ChequeDAOImpl implements ChequeDAO {
 				cheque.setCustomerName(rs.getString("customer_name"));
 				cheque.setBranchCode(rs.getString("branch_code"));
 				cheque.setMicrCode(rs.getString("micr_code"));
-				cheque.setAmount(rs.getBigDecimal("amount"));
-				cheque.setAvailableBalance(rs.getBigDecimal("available_balance"));
+				cheque.setAmount(rs.getDouble("amount"));
+				cheque.setAvailableBalance(rs.getDouble("available_balance"));
 				cheque.setChequeDate(rs.getDate("cheque_date").toLocalDate());
 				cheque.setAccountStatus(
 					    AccountStatus.valueOf(rs.getString("account_status")));
