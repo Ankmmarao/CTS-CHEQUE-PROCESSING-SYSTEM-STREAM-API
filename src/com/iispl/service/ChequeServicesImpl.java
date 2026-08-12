@@ -23,8 +23,7 @@ public class ChequeServicesImpl implements ChequeServices {
 	@Override
 	public List<String> getUniqueBranchCodes() {
 		// TODO Auto-generated method stub
-		List<String> branches = cheques.stream().map(Cheque::getBranchCode).distinct().collect(Collectors.toList());
-		return branches;
+		return cheques.stream().map(Cheque::getBranchCode).distinct().collect(Collectors.toList());
 	}
 
 	@Override
@@ -63,7 +62,7 @@ public class ChequeServicesImpl implements ChequeServices {
 	@Override
 	public Optional<Cheque> getLowestValueCheque() {
 		// TODO Auto-generated method stub
-		return Optional.empty();
+		return cheques.stream().min(Comparator.comparing(Cheque::getAmount));
 	}
 
 	@Override
