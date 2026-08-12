@@ -13,7 +13,7 @@ public class CTSStreamAPIMain {
 	  List<Cheque> cheques =service.getAllCheques();
 	  
 	  cheques.forEach(System.out::println);
-	 
+
   }  
   
 }

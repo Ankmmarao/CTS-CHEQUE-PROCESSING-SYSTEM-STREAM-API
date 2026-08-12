@@ -57,7 +57,7 @@ public class ChequeServicesImpl implements ChequeServices {
 	@Override
 	public Optional<Cheque> getHighestValueCheque() {
 		// TODO Auto-generated method stub
-		return Optional.empty();
+		return cheques.stream().max(Comparator.comparing(Cheque::getAmount));
 	}
 
 	@Override
