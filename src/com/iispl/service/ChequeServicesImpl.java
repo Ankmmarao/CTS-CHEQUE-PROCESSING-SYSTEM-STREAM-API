@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.OptionalDouble;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import com.iispl.dao.ChequeDAO;
 
@@ -23,7 +24,8 @@ public class ChequeServicesImpl implements ChequeServices {
 	@Override
 	public List<String> getUniqueBranchCodes() {
 		// TODO Auto-generated method stub
-		return null;
+		List<String> branches = cheques.stream().map(Cheque::getBranchCode).distinct().collect(Collectors.toList());
+		return branches;
 	}
 
 	@Override
