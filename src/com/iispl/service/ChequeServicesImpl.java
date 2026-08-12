@@ -38,7 +38,11 @@ public class ChequeServicesImpl implements ChequeServices {
 	@Override
 	public List<Cheque> getTopFiveProcessingRecords() {
 		// TODO Auto-generated method stub
-		return null;
+		
+		List<Cheque> result=cheques.stream().sorted(Comparator.
+				comparing(Cheque::getAmount).reversed()).limit(5).toList();
+		
+		return result;
 	}
 
 	@Override
@@ -92,19 +96,32 @@ public class ChequeServicesImpl implements ChequeServices {
 	@Override
 	public Map<String, Long> getChequeCountByBranch() {
 		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public Map<String, Map<String, Double>> getBranchAmountSummary() {
+		
+		
+		
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Map<String, DoubleSummaryStatistics> getBranchStatistics() {
+		
+		Map<String, DoubleSummaryStatistics> result = cheques.stream()
+		        .collect(Collectors.groupingBy(
+		                Cheque::getBranchCode,
+		                Collectors.summarizingDouble(
+		                        cheque -> cheque.getAmount().doubleValue()
+		                )
+		        ));
+		
 		// TODO Auto-generated method stub
-		return null;
+		return  result;
 	}
 
 	@Override
