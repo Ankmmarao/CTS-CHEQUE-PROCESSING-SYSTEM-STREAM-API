@@ -1,5 +1,6 @@
 package com.iispl.service;
 
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.DoubleSummaryStatistics;
 import java.util.List;
@@ -115,7 +116,8 @@ public class ChequeServicesImpl implements ChequeServices {
 	@Override
 	public List<Cheque> getFinalizedCtsResult() {
 		// TODO Auto-generated method stub
-		return null;
+	List<Cheque> finalizedResult=cheques.stream().collect(Collectors.collectingAndThen(Collectors.toList(), Collections::unmodifiableList));
+		return finalizedResult;
 	}
 
 //	Add diagnostic observation to one existing Stream pipeline. Do not use peek() to perform essential
