@@ -117,8 +117,10 @@ public class ChequeServicesImpl implements ChequeServices {
 //	business updates.
 	@Override
 	public List<Cheque> traceChequeStream() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Cheque> tracedcheques=cheques.stream()
+											.peek(c-> System.out.println("Trace -> "+c.getChequeNumber()+" entered pipeline"))
+											.collect(Collectors.toList());
+		return tracedcheques;
 	}
 
 //	Create a reusable Comparator: branch code first, then amount descending, then cheque number.
