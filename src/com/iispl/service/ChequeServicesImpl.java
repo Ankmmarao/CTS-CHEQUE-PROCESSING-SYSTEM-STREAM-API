@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 
 import com.iispl.dao.ChequeDAO;
 import com.iispl.dao.ChequeDAOImpl;
+import com.iispl.enums.ValidationStatus;
 import com.iispl.model.Cheque;
 
 public class ChequeServicesImpl implements ChequeServices {
@@ -82,8 +83,10 @@ public class ChequeServicesImpl implements ChequeServices {
 //	Using the approved-cheque result from the existing application, create one comma-separated chequenumber String
 	@Override
 	public String getApprovedCtsReferences() {
-		// TODO Auto-generated method stub
-		return null;
+		 return cheques.stream()
+				 		.filter(c->c.getValidationStatus()==ValidationStatus.APPROVED)
+				 		.map(Cheque::getChequeNumber)
+				 		.collect(Collectors.joining(","));
 	}
 
 	@Override
